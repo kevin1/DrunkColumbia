@@ -136,6 +136,9 @@
 		var mins = time % 60;
 		var hrs = (time - mins) / 60;
 		
+		var addrArray = this["address"].split("\n");
+		var addrHTML = addrArray.join("<br>");
+		
 		// Rounding must take place AFTER hrs calculation because rounding mins will make hrs inaccurate
 		mins = Math.round(mins);
 		hrs = Math.round(hrs);
@@ -150,7 +153,7 @@
 				</div>\n\
 				<div class=\"list-body\">\n\
 					<p class=\"phone\">" + this["phone"] + "</p>\n\
-					<p class=\"address\">" + this["address"] + "</p>\n\
+					<p class=\"address\">" + addrHTML + "</p>\n\
 				</div>\n\
 			</div>\n\
 		</div>";
