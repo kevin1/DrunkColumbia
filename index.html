@@ -84,11 +84,11 @@
 					
 					var tomorrowHours = this["hours"][nextDay.toString()];
 					
-					openSec = toMinutes(tomorrowHours[segment]["open"]);
+					openSec = toMinutes(tomorrowHours[nextSegment]["open"]);
 					// If next set connects with this seg
 					if (openSec == 0)
 					{
-						closeSec = toMinutes(tomorrowHours[segment]["close"]);
+						closeSec = toMinutes(tomorrowHours[nextSegment]["close"]);
 						delta += closeSec;
 					}
 				}
