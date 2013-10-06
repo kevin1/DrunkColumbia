@@ -4,3 +4,74 @@
 	padding: 0;
 }
 
+html
+{
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+h1
+{
+	font-size: 3em;
+}
+
+#subtitle
+{
+	font-size: 1.3em;
+}
+
+h1, #subtitle
+{
+	text-align: center;
+}
+
+h2
+{
+	float: left;
+}
+
+h3
+{
+	float: right;
+}
+
+#list
+{
+	display: block;
+	width: 700px;
+	margin: 20px auto 20px auto;
+}
+
+.list-entry
+{
+	background-color: #75b2dd; /* Columbia Blue */
+	height: 80px;
+	padding: 20px;
+}
+
+.list-header
+{
+	height: 40px;
+}
+
+.list-body
+{
+	font-size: 1.1em;
+}
+
+.list-header, .list-body
+{
+	display: block;
+}
+
+.phone
+{
+	clear: both;
+	display: block;
+}
+
+.phone, .address
+{
+	display: block;
+	float: left;
+	width: 330px;
+}
