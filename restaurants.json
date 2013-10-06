@@ -48,7 +48,7 @@
 	"2":
 	{
 		"name": "JJ’s Place",
-		"type": "Fried Shit",
+		"type": "American",
 		"hours":
 		{
 			"0": 
@@ -326,7 +326,7 @@
 			}
 		},
 		"phone": "(212) 866-7035",
-		"address": "2880 Broadway at 111th Street, 2nd floor\nNew York, NY 10025"
+		"address": "2880 Broadway at 111th St, 2nd floor\nNew York, NY 10025"
 	}
 		
 }
