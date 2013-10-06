@@ -21,16 +21,11 @@
 	function getRestaurants()
 	{
 		console.log("in function getRestaurants");
-		//alert("hi");
-		// This is not a blocking function! So anything that touches data must come from the callback.
+		// This is not a blocking function! So anything that touches data must come from the callback. (Thanks to the web dev at Lyft who pointed this out to me! <3)
 		$.getJSON("restaurants.json", function(data)
 		{
-			/*var i = 1;
-			alert(data[i.toString()]["name"]);
-			alert(data.length);*/
 			for (var prop in data)
 			{
-				//result += prop + " = " + data[prop] + "\n";
 				var restaurant = data[prop];
 				restaurant.calcTimeToClose = calcTimeToClose;
 				restaurant.print = printRestaurantEntry;
@@ -160,6 +155,7 @@
 			</div>\n\
 		</div>";
 		
+		// Thanks to the engineer from Firebase who told me this function exists! :D
 		$("#list").append(entryString);
 	}
 	</script>
@@ -185,7 +181,7 @@
 	</div>
 	
 	<footer>
-		
+		<p></p>
 	</footer>
 	
 </body>
