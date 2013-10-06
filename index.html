@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Drunk Columbia</title>
+	<link rel="stylesheet" href="master.css">
+</head>
+
+<body>
+	<script src="jquery-2.0.3.js"></script>
+	<script>
+	var restaurants = [];
+	
+	window.onload = function()
+	{
+		console.log("in onload");
+		// Download and parse restaurants.json list
+		getRestaurants();
+	}
+	
+	function getRestaurants()
+	{
+		console.log("in function getRestaurants");
+		//alert("hi");
+		// This is not a blocking function! So anything that touches data must come from the callback.
+		$.getJSON("restaurants.json", function(data)
+		{
+			/*var i = 1;
+			alert(data[i.toString()]["name"]);
+			alert(data.length);*/
+			for (var prop in data)
+			{
+				//result += prop + " = " + data[prop] + "\n";
+				var restaurant = data[prop];
+				restaurant.calcTimeToClose = calcTimeToClose;
+				restaurants.push(restaurant);
+				console.log("added, now have " + restaurants.length + " restaurants");
+			}
+			console.log("Time to close is " + restaurants[1].calcTimeToClose());
+		});
+	}
+	
+	function calcTimeToClose()
+	{
+		console.log("restaurant is " + this.name);
+		console.log("in calcTimeToClose");
+		var dayOfWeek = new Date().getDay();
+		console.log("Day of week is " + dayOfWeek);
+		
+		var todayHours = this["hours"][dayOfWeek.toString()];
+		for (var segment in todayHours)
+		{
+			console.log("block number " + segment);
+			
+			var openSec = toMinutes(todayHours[segment]["open"]);
+			var currSec = minutesSinceMidnight();
+			var closeSec = toMinutes(todayHours[segment]["close"]);
+			// If we are within the current block
+			if (openSec < currSec &&
+				currSec < closeSec)
+			{
+				console.log("In this block");
+				var delta = closeSec - currSec;
+				// If the time doesn't possibly extend into next day (not ending at 11:59 PM)
+				if (closeSec != 23*60 + 59)
+				{
+					console.log("This segment only");
+				}
+				else
+				{
+					console.log("Checking next day's first segment");
+					
+					var nextDay = (dayOfWeek + 1) % 6;
+					var nextSegment = 1;
+					
+					var tomorrowHours = this["hours"][nextDay.toString()];
+					
+					openSec = toMinutes(tomorrowHours[segment]["open"]);
+					// If next set connects with this seg
+					if (openSec == 0)
+					{
+						closeSec = toMinutes(tomorrowHours[segment]["close"]);
+						delta += closeSec;
+					}
+				}
+				return delta;
+			}
+			else
+			{
+				console.log("not current segment, moving on");
+			}
+		}
+		
+		// Not open today
+		return -1;
+	}
+	
+	function minutesSinceMidnight()
+	{
+		// Difference between current time and midnight in ms
+		var now = new Date();
+		var then = new Date(
+				now.getFullYear(),
+				now.getMonth(),
+				now.getDate(),
+				0, 0, 0);
+		var diff = now.getTime() - then.getTime();
+		// Convert ms to s
+		diff /= 1000;
+		// Convert s to min
+		diff /= 60;
+		
+		return diff;
+	}
+	
+	function toMinutes(timeString)
+	{
+		var timeArray = timeString.split(":");
+		var timeSec = parseInt(timeArray[0]) * 60 + parseInt(timeArray[1]);
+		return timeSec;
+	}
+	</script>
+	
+	<header>
+		<h1>Drunk Columbia</h1>
+		<p>You&rsquo;re drunk. You&rsquo;re hungry. What&rsquo;s open around Columbia right now?</p>
+	</header>
+	
+	<div id="main">
+		
+	</div>
+	
+	<footer>
+		
+	</footer>
+	
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+{
+	"1":
+	{
+		"name": "Doaba Deli",
+		"type": "Indian, Vegetarian",
+		"hours":
+		{
+			"0": 
+			{
+				"1": {"open": "0:00", "close": "5:30"},
+				"2": {"open": "6:00", "close": "23:59"}
+			}
+		},
+		"phone": "(212) 222-2636",
+		"address": "945 Columbus Ave at 107th St\nManhattan, NY 10025"
+	},
+	
+	"2":
+	{
+		"name": "JJ’s Place",
+		"type": "Fried Shit",
+		"hours":
+		{
+			"0": 
+			{
+				"1": {"open": "0:00", "close": "1:00"},
+				"2": {"open": "12:00", "close": "23:59"}
+			},
+			"1": 
+			{
+				"1": {"open": "0:00", "close": "1:00"},
+				"2": {"open": "12:00", "close": "23:59"}
+			},
+			"2": 
+			{
+				"1": {"open": "0:00", "close": "1:00"},
+				"2": {"open": "12:00", "close": "23:59"}
+			},
+			"3": 
+			{
+				"1": {"open": "0:00", "close": "1:00"},
+				"2": {"open": "12:00", "close": "23:59"}
+			},
+			"4": 
+			{
+				"1": {"open": "12:00", "close": "20:00"}
+			},
+			"5": 
+			{
+				"1": {"open": "12:00", "close": "20:00"}
+			},
+			"6": 
+			{
+				"1": {"open": "12:00", "close": "20:00"}
+			}
+		},
+		"phone": "(212) 222-2636",
+		"address": "945 Columbus Ave at 107th St\nManhattan, NY 10025"
+	}
+}
