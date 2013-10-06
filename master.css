@@ -12,6 +12,18 @@ html
 h1
 {
 	font-size: 3em;
+	text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+	color: rgba(0, 0, 0, 0.5);
+	
+	-webkit-animation-duration: 3s;
+	-webkit-animation-name: slidein;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction: alternate;
+	
+	-moz-animation-duration: 3s;
+	-moz-animation-name: slidein;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-direction: alternate;
 }
 
 #subtitle
@@ -19,7 +31,7 @@ h1
 	font-size: 1.3em;
 }
 
-h1, #subtitle
+header, footer
 {
 	text-align: center;
 }
@@ -74,4 +86,28 @@ h3
 	display: block;
 	float: left;
 	width: 330px;
+}
+
+@-webkit-keyframes slidein
+{
+	from
+	{
+		text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+	}
+	to
+	{
+		text-shadow: -4px -4px 0px rgba(0, 0, 0, 0.5);
+	}
+}
+
+@-moz-keyframes slidein
+{
+	from
+	{
+		text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+	}
+	to
+	{
+		text-shadow: -4px -4px 0px rgba(0, 0, 0, 0.5);
+	}
 }
