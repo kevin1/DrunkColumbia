@@ -297,6 +297,15 @@
 		"hours": "continuous",
 		"phone": "(212) 222-3367",
 		"address": "2840 Broadway at 110th St\nNew York, NY 10025"
+	},
+
+	"9":
+	{
+		"name": "Morton Williams",
+		"type": "Grocery",
+		"hours": "continuous",
+		"phone": "(212) 666-4190",
+		"address": "2941 Broadway at 115th St\nNew York, NY 10027"
 	}
 	
 }
