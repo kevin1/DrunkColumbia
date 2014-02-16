@@ -46,7 +46,7 @@
 			{
 				var timeToClose = restaurants[prop].calcTimeToClose();
 				console.log("Time to close is " + timeToClose);
-				if (timeToClose > 0)
+				if (timeToClose > 0 || timeToClose == -2)
 				{
 					restaurants[prop].print();
 				}
@@ -62,9 +62,15 @@
 	{
 		console.log("restaurant is " + this.name);
 		console.log("in calcTimeToClose");
+		
+		if (this["hours"] === "continuous")
+		{
+			console.log("24/7 restaurant");
+			return -2;
+		}
+		
 		var dayOfWeek = new Date().getDay();
 		console.log("Day of week is " + dayOfWeek);
-		
 		var todayHours = this["hours"][dayOfWeek.toString()];
 		for (var segment in todayHours)
 		{
@@ -141,16 +147,26 @@
 	function printRestaurantEntry()
 	{
 		var time = this.calcTimeToClose();
+		var timeStr;
 		
+		if (time == -2)
+		{
+			timeStr = "Open 24 hours";
+		}
+		else
+		{
 		var mins = time % 60;
 		var hrs = (time - mins) / 60;
-		
-		var addrArray = this["address"].split("\n");
-		var addrHTML = addrArray.join("<br>");
 		
 		// Rounding must take place AFTER hrs calculation because rounding mins will make hrs inaccurate
 		mins = Math.round(mins);
 		hrs = Math.round(hrs);
+		
+		timeStr = "Closes in " + hrs + " hr " + mins + " min";
+		}
+		
+		var addrArray = this["address"].split("\n");
+		var addrHTML = addrArray.join("<br>");
 		
 		console.log("in printRestaurantEntry");
 		var entryString = 
@@ -158,7 +174,7 @@
 			<div class=\"list-entry\">\n\
 				<div class=\"list-header\">\n\
 					<h2>" + this["name"] + " (" + this["type"] + ")</h2>\n\
-					<h3>Closes in " + hrs + " hr " + mins + " min</h3>\n\
+					<h3>" + timeStr + "</h3>\n\
 				</div>\n\
 				<div class=\"list-body\">\n\
 					<p class=\"phone\">" + this["phone"] + "</p>\n\
