@@ -288,6 +288,15 @@
 		},
 		"phone": "(212) 864-6137",
 		"address": "2880 Broadway\nNew York, NY 10025"
+	},
+	
+	"8":
+	{
+		"name": "Westside Market",
+		"type": "Grocery",
+		"hours": "continuous",
+		"phone": "(212) 222-3367",
+		"address": "2840 Broadway at 110th St\nNew York, NY 10025"
 	}
 	
 }
